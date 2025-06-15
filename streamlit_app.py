@@ -48,20 +48,20 @@ if ingredients_list:
         #fv_df = pd_df.Dataframe(fruityvice_response.json(), column = ['nutritions'])
         fv_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True)
 
-        #smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/" + fruit_chosen)
+        smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/" + fruit_chosen)
         #st.text(smoothiefroot_response.json())
-        #sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
+        sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
 
         #st.write(ingredients_string)
 
-        #my_insert_stmt = """ insert into smoothies.public.orders(ingredients, name_on_order)
-            #values ('""" + ingredients_string + """', '""" + name_on_order + """')"""
+        my_insert_stmt = """ insert into smoothies.public.orders(ingredients, name_on_order)
+            values ('""" + ingredients_string + """', '""" + name_on_order + """')"""
 
         #st.write(my_insert_stmt)
         #st.stop()
         
-        #time_to_insert = st.button('Submit Order')
+        time_to_insert = st.button('Submit Order')
 
-        #if time_to_insert:
-            #session.sql(my_insert_stmt).collect()        
-            #st.success(f'Your Smoothie is ordered, {name_on_order}!', icon="✅")
+        if time_to_insert:
+            session.sql(my_insert_stmt).collect()        
+            st.success(f'Your Smoothie is ordered, {name_on_order}!', icon="✅")
